@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,11 +29,48 @@ public class MainActivity extends AppCompatActivity {
 
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
+		
+		/* Get TextView for all the categories and set OnClickListeners on them */
+		// Numbers
+		TextView numbersText = (TextView) findViewById(R.id.numbers);
+		numbersText.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					openActivity(NumbersActivity.class);
+				}
+			});
+
+		// Family
+		TextView familyText = (TextView) findViewById(R.id.family);
+		familyText.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					openActivity(FamilyActivity.class);
+				}
+			});
+
+		// Phrases
+		TextView phrasesText = (TextView) findViewById(R.id.phrases);
+		phrasesText.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					openActivity(PhrasesActivity.class);
+				}
+			});
+
+		// Colors
+		TextView colorsText = (TextView) findViewById(R.id.colors);
+		colorsText.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					openActivity(ColorsActivity.class);
+				}
+			});
     }
 
-    public void openNumbersActivity(View view) {
-        Intent goToNumbersActivity = new Intent(this, NumbersActivity.class);
+    public void openActivity(Class act) {
+        Intent goToAct = new Intent(this, act);
 
-        startActivity(goToNumbersActivity);
+        startActivity(goToAct);
     }
 }
